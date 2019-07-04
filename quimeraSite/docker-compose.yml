@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web:
+    container_name: my-web-container
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4200:4200"
+    volumes:
+      - /app/node_modules
+      - .:/app
+  tests:
+    container_name: my-web-test-container
+    build:
+      context: .
+      dockerfile: Dockerfile-test.dev
+    volumes:
+      - /app/node_modules
+      - .:/app
